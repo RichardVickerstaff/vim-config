@@ -13,6 +13,7 @@ call plug#begin(plugin_dir)
 " ----------------------------------------------
 
 " UI
+Plug 'airblade/vim-gitgutter'                                     " Show the column of changes to the file against git
 Plug 'christoomey/vim-tmux-navigator'                             " Move between Vim panes & Tmux panes easily
 Plug 'mhinz/vim-startify'                                         " Start Vim with a more useful start screen
 Plug 'regedarek/ZoomWin'                                          " Enable one pane to be fullscreened temporarily
@@ -90,9 +91,6 @@ set fillchars+=vert:\                   " Set the window borders to not have | c
 set formatoptions+=j                    " Delete comment characters when joining lines
 set hidden                              " Allow buffer switching without saving
 set history=1000                        " Remember a decent way back
-set iskeyword+=\-                       " Add - as a keyword
-set iskeyword+=\!                       " Add ! as a keyword
-set iskeyword+=\?                       " Add ? as a keyword
 set laststatus=2                        " Always show status line.
 set lazyredraw                          " Skip redraw when applying macros and scripts
 set listchars=trail:•,tab:»•,nbsp:␣
@@ -214,6 +212,9 @@ call yankstack#setup()
 " Disable Ex Mode to remove confusion
 nnoremap Q <Nop>
 
+" Deal with my sloppy shift-release
+command! Qa :qa
+
 " make Y consistent with C and D
 nnoremap Y y$
 
@@ -265,20 +266,22 @@ nmap ga <Plug>(EasyAlign)
 " <leader>gc to show commits in this file
 nmap <Leader>gc :BCommits<cr>
 
-" <Leader>gn to jump to the next change since git commit
-nmap <leader>gn <Plug>(coc-git-nextchunk)<CR>
+" <Leader>gd to jump to the next change since git commit
+nmap <Leader>gd <Plug>(GitGutterPreviewHunk)
+"
+" <Leader>gn/gN/gp to jump to the next/prev change since git commit
+nmap <leader>gn <Plug>(GitGutterNextHunk)
+nmap <leader>gp <Plug>(GitGutterPrevHunk)
+nmap <leader>gN <Plug>(GitGutterPrevHunk)
 
-" <leader>gN to jump to the prev change since git commit
-nmap <leader>gN <Plug>(coc-git-prevchunk)<CR>
-
-" <Leader>gd to show details of the current chunk
-nmap <silent> <Leader>gd :CocCommand git.chunkInfo<CR>
+" <Leader>gh highlight changed lines
+nmap <leader>gh :GitGutterLineHighlightsToggle<CR>
 
 " <Leager>ga to add the current git hunk to git staging
-nmap <silent> <Leader>ga :CocCommand git.chunkStage<CR>
+nmap <Leader>ga <Plug>(GitGutterStageHunk)
 
 " <Leader>gu to undo the current changed hunk
-nmap <silent> <Leader>gu :CocCommand git.chunkUndo<CR>
+nmap <Leader>gu <Plug>(GitGutterUndoHunk)
 
 " <Leader>h to dismiss search result highlighting until next search or press of 'n'
 :noremap <silent> <leader>h :noh<CR>
@@ -432,7 +435,6 @@ inoremap <expr> <c-l> pumvisible() ? "\<C-y>" : "\<c-l>"
 call coc#add_extension(
       \ 'coc-css',
       \ 'coc-dictionary',
-      \ 'coc-git',
       \ 'coc-json',
       \ 'coc-lists',
       \ 'coc-snippets',
@@ -630,9 +632,21 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
 autocmd FileType netrw nnoremap <buffer><silent>q :bd<CR>
-autocmd FileType netrw nnoremap <buffer><silent><esc> :bd<CR>
 autocmd FileType netrw nnoremap <buffer><silent>a %
 autocmd FileType netrw nnoremap <buffer><silent>u -
+
+" ----------------------------------------------
+" Configure GitGutter
+" ----------------------------------------------
+" Set the git gutter colors to be the same as the number column
+hi clear SignColumn
+
+" Set the Gutter to show all the time, avoiding the column 'pop' when saving
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_modified_removed = '~-'
+let g:gitgutter_max_signs = 1000
 
 " ----------------------------------------------
 " Add Misc helpful functions
