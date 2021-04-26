@@ -137,7 +137,7 @@ hi rubySymbol                 guifg=#10B0FF ctermfg=39   gui=NONE cterm=NONE
 hi rubyReturn                 guifg=#9C4AC0 ctermfg=133  guibg=NONE    ctermbg=NONE gui=BOLD cterm=BOLD cterm=BOLD
 hi rubyTodo                   guifg=#FFB633 ctermfg=215  guibg=NONE    ctermbg=NONE gui=BOLD cterm=BOLD cterm=BOLD
 hi rspecBeforeAndAfter        guifg=#E080FF ctermfg=177  gui=NONE cterm=NONE
-hi rspecGroupMethods          guifg=#F4628D ctermfg=204  gui=NONE cterm=NONE
+hi rspecGroupMethods          guifg=#E080FF ctermfg=177  gui=NONE cterm=NONE
 hi rspecMatchers              guifg=#00A787 ctermfg=36   guibg=NONE    ctermbg=NONE gui=BOLD cterm=BOLD cterm=BOLD
 hi rspecMocks                 guifg=#FFB633 ctermfg=215  gui=NONE cterm=NONE
 hi elixirAlias                guifg=#FFFF40 ctermfg=227  gui=NONE cterm=NONE
