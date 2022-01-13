@@ -1,10 +1,12 @@
 An awesome Vim config for development, slow roasted with a Ruby twist and a shot of web-dev.
 
 # Installing
-## For Neovim (recommended)
+## For Neovim (highly recommended)
 ```bash
-git clone --branch nvim https://github.com/AdamWhittingham/vim-config.git ~/.vim && ~/.vim/install
+git clone --branch nvim https://github.com/AdamWhittingham/vim-config.git ~/.config/nvim
 ```
+> :warning: This config has a long happy history on Vim, but now the best features and active development is focused on Neovim. It is highly recommended to use that version on the `nvim` branch.
+
 ## For Vim
 ```bash
 git clone https://github.com/AdamWhittingham/vim-config.git ~/.vim && ~/.vim/install
