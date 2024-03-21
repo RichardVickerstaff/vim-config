@@ -305,8 +305,8 @@ nmap <silent> <Leader>sp :setlocal spell!<CR>
 nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
 " Leader t/T to send the current file/line to rspec via tmux windows
-nmap <leader>t :call InvokeRspecViaTmux(expand("%:p"))<CR>
-nmap <leader>T :call InvokeRspecViaTmux(expand("%:p") . ":" . line('.'))<CR>
+nmap <leader>t :call InvokeRspecViaTmux(expand("%"))<CR>
+nmap <leader>T :call InvokeRspecViaTmux(expand("%") . ":" . line('.'))<CR>
 
 "  <Leader>u to toggle undo history browser
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -644,7 +644,7 @@ function! InvokeRspecViaTmux(test)
     let l:targetWindow = 3
   endif
   let l:target = "-t " . l:targetWindow . ".1"
-  let l:command = "tmux send-keys" . " " . l:target . ' "rspec '  . a:test . '" Enter'
+  let l:command = "tmux send-keys" . " " . l:target . ' "carwow run rspec '  . a:test . '" Enter'
   echom "Running " . a:test . " in window " . l:targetWindow
   let output = system(l:command)
 endfunction
