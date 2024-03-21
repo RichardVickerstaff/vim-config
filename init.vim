@@ -19,10 +19,12 @@ Plug 'mhinz/vim-startify'                                         " Start Vim wi
 Plug 'regedarek/ZoomWin'                                          " Enable one pane to be fullscreened temporarily
 Plug 'mbbill/undotree'                                            " Visualise the undo tree and make it easy to navigate
 Plug 'tpope/vim-repeat'                                           " Make many more operations repeatable with `.`
+Plug 'preservim/nerdtree'
 
 " Search and file exploring
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy search files
 Plug 'junegunn/fzf.vim'                                           " Add nice FZF bindings
+Plug 'airblade/vim-localorie'
 
 " Additional contextual information
 Plug 'AdamWhittingham/vim-copy-filename'                          " Quick shortcuts for copying the file name, path and/or line number
@@ -42,12 +44,14 @@ Plug 'tpope/vim-surround'                                         " Quick editin
 Plug 'wellle/targets.vim'                                         " Additional text objects and motions
 
 " Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}                   " Completion engine and languageserver
 Plug 'tpope/vim-endwise'                                          " Insert `end` into ruby when
-Plug 'honza/vim-snippets'                                         " Add many popular shared snippets
-Plug 'noahfrederick/vim-skeleton'                                 " Load a template when creating some files
+Plug 'github/copilot.vim', {'branch': 'release'}
+
 
 " Language specific tools
+let g:polyglot_disabled = ['elm']
+let g:elm_setup_keybindings = 0
+Plug 'ajvargo/ruby-refactor'
 Plug 'sheerun/vim-polyglot'                                       " Currated group of other excellent plugins
 Plug 'hail2u/vim-css3-syntax'                                     " CSS3 syntax parsing
 Plug 'vim-scripts/icalendar.vim'                                  " Syntax for iCal files

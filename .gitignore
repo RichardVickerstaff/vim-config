@@ -16,3 +16,4 @@ plugins/*
 undo_data/*
 !undo_data/.gitkeep
 sessions
+pack/
