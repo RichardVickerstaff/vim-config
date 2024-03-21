@@ -213,6 +213,10 @@ call yankstack#setup()
 " Command Shortcuts
 " ----------------------------------------------
 
+" Commands to help find ruby translations
+nnoremap <silent> <leader>lt :call localorie#translate()<CR>
+nnoremap <silent> <leader>le :echo localorie#expand_key()<CR>
+
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 map <silent> <Leader>M :NERDTreeFind<CR>
 
