@@ -251,18 +251,8 @@ map <silent> <leader>} :Tags<cr>
 "  <Leader>{ to Search for a tag in the current buffer
 map <silent> <leader>{ :BTags<cr>
 
-" Jump to the definitionof this tag
-nmap <silent> <c-]> <Plug>(coc-definition)
-
-" Show all references to the method/variable/etc under the cursor
-nmap <silent> <leader>] <Plug>(coc-references)
-
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 vmap a <Plug>(LiveEasyAlign)
-
-" Format the current file/section
-nmap <c-f> <Plug>(coc-format)
-vmap <c-f> <Plug>(coc-format-selected)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
@@ -298,9 +288,6 @@ map <silent> <leader>i  m`gg=G``
 
 " <leader>m to set mark
 noremap <leader>m `
-
-" Rename the tag under the cursor
-nmap <leader>r <Plug>(coc-rename)
 
 "  <Leader>rt to run ctags on the current directory
 map <leader>rt :!ctags -R .<CR><CR>
@@ -435,18 +422,6 @@ augroup END
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <c-l> pumvisible() ? "\<C-y>" : "\<c-l>"
-
-call coc#add_extension(
-      \ 'coc-css',
-      \ 'coc-dictionary',
-      \ 'coc-json',
-      \ 'coc-lists',
-      \ 'coc-snippets',
-      \ 'coc-solargraph',
-      \ 'coc-tag',
-      \ 'coc-ultisnips',
-      \ 'coc-yaml'
-      \ )
 
 " ----------------------------------------------
 " File template settings
