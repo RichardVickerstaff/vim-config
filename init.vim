@@ -19,7 +19,7 @@ Plug 'mhinz/vim-startify'                                         " Start Vim wi
 Plug 'regedarek/ZoomWin'                                          " Enable one pane to be fullscreened temporarily
 Plug 'mbbill/undotree'                                            " Visualise the undo tree and make it easy to navigate
 Plug 'tpope/vim-repeat'                                           " Make many more operations repeatable with `.`
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'                                         " A file system explorer for the Vim editor
 
 " Search and file exploring
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy search files
@@ -213,6 +213,9 @@ call yankstack#setup()
 " Command Shortcuts
 " ----------------------------------------------
 
+nmap <silent> <Leader>m :NERDTreeToggle<CR>
+map <silent> <Leader>M :NERDTreeFind<CR>
+
 " Disable Ex Mode to remove confusion
 nnoremap Q <Nop>
 
@@ -285,9 +288,6 @@ nmap <silent> <leader>H :set nolist!<CR>
 
 " <Leader>i to reindent the current file
 map <silent> <leader>i  m`gg=G``
-
-" <leader>m to set mark
-noremap <leader>m `
 
 "  <Leader>rt to run ctags on the current directory
 map <leader>rt :!ctags -R .<CR><CR>
